@@ -4,14 +4,11 @@ from os.path import isfile, join
 import filename_utilities
 
 def countOpponents(filenameList, char_name):
-    print(filenameList)
     opponent_counts = {}
     
     for filename in filenameList:
         matchup = filename_utilities.getMatchup(filename)
-        print(f'Found matchup {matchup}')
         opponent_char = filename_utilities.getOpponent(matchup, char_name)
-        print(f'Opponent: {opponent_char}')
         # None suggests neither char is one we are interested in, so we skip.
         if opponent_char != None:
             count = opponent_counts.get(opponent_char)
@@ -26,7 +23,7 @@ def printOpponentCounts(count_dict):
     for opp, count in count_dict.items():
         print(f'{opp}: {count}')
 
-def main():
+def countMatchupsPlayed():
     print('Please enter path to replay directory:')
     replay_dir_path = str(input())
     print('Please enter name of the char you play as it appears in replay filename:')
@@ -40,7 +37,4 @@ def main():
     
     printOpponentCounts(sorted_counts)
     
-
-######################
-
-main()
+countMatchupsPlayed()
